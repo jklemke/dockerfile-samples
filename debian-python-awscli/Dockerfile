@@ -13,13 +13,11 @@ RUN unzip -qq awscliv2.zip
 RUN ./aws/install
 
 RUN useradd --create-home devuser 
-
 WORKDIR /home/devuser
-
-COPY --chown=devuser:devuser ./.bashrc .
-COPY --chown=devuser:devuser ./.dircolors .
-COPY --chown=devuser:devuser ./.aws/* ./.aws/
-
 USER devuser
+
+COPY ./.bashrc .
+COPY ./.dircolors .
+COPY ./.aws/* ./.aws/
 
 CMD ["bash"]
